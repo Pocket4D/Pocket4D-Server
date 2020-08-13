@@ -1,6 +1,6 @@
 # pocket4d-server
 
-This is pocket4d testing server only for POC 0 usage.
+This is pocket4d testing server only for POC 0 usa.
 
 ## Build binary
 
@@ -26,7 +26,7 @@ binary (we can make a parameter for this in the future).
 
 **/api/v1/bundled/{name}**
 
-*Upload a mini program bundled, *
+*Upload a mini program bundled*
 
 Request: form-data
 
