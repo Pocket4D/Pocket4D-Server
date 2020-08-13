@@ -1,8 +1,21 @@
 package restful
 
+import (
+	"github.com/FireStack-Lab/pocket4d-server/storage"
+	"github.com/google/uuid"
+)
+
 type Service struct {
+	Store *storage.Store
 }
 
-func NewService() *Service {
-	return &Service{}
+func NewService(store *storage.Store) *Service {
+	return &Service{
+		Store: store,
+	}
+}
+
+func (s *Service) Save(name, bundled string) (error, string) {
+	appId := uuid.New().String()
+	return s.Store.Save(appId, name, bundled)
 }

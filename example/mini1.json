@@ -1,0 +1,43 @@
+{
+  "accepted": false,
+  "cumulative_gas": 3182,
+  "epoch_num": "1691154",
+  "event_logs": 1,
+  "success": true,
+  "transitions": [
+    {
+      "accepted": false,
+      "addr": "0xa1f40db4f1b598a59cb4894cbe01f690a1c10be1",
+      "depth": 0,
+      "msg": {
+        "_amount": "0",
+        "_recipient": "0x75633ee00c5c4c7bfff7e71f36d17b4f0036a57e",
+        "_tag": "AssignStakeReward",
+        "params": [
+          {
+            "type": "List (SsnRewardShare)",
+            "value": [
+              {
+                "argtypes": [
+                ],
+                "arguments": [
+                  "0xf0b55a21ed19e6e442833afa9266c166ad639d53",
+                  "52000000"
+                ],
+                "constructor": "SsnRewardShare"
+              }
+            ],
+            "vname": "ssnreward_list"
+          },
+          {
+            "type": "ByStr20",
+            "value": "0xd90f2e538ce0df89c8273cad3b63ec44a3c4ed82",
+            "vname": "initiator"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": {
+  }
+}
