@@ -13,7 +13,7 @@ type ErrorRep struct {
 
 type SuccessRep struct {
 	AppId string `json:"app_id"`
-	Name string `json:"name"`
+	Name  string `json:"name"`
 }
 
 type Controller struct {
@@ -38,6 +38,7 @@ func NewController(app *iris.Application, ser *Service) *Controller {
 	{
 		v1.Post("/ping", c.Ping)
 		v1.Post("/bundled/{name}", c.UploadMiniBundled)
+		v1.Get("/bundled",c.All)
 	}
 
 	return c
@@ -47,6 +48,21 @@ func (controller *Controller) Ping(ctx iris.Context) {
 	_, _ = ctx.JSON(iris.Map{
 		"message": "pong",
 	})
+}
+
+func (controller *Controller) All(ctx iris.Context) {
+	err, apps := controller.service.Scan()
+	if err != nil {
+		_, _ = ctx.JSON(&ErrorRep{
+			ErrorCode:    400,
+			ErrorMessage: err.Error(),
+		})
+		return
+	}
+
+	_, _ = ctx.JSON(apps)
+	return
+
 }
 
 func (controller *Controller) UploadMiniBundled(ctx iris.Context) {
@@ -77,7 +93,7 @@ func (controller *Controller) UploadMiniBundled(ctx iris.Context) {
 
 	_, _ = ctx.JSON(&SuccessRep{
 		AppId: appId,
-		Name: name,
+		Name:  name,
 	})
 	return
 }

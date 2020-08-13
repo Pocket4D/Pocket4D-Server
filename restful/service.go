@@ -19,3 +19,7 @@ func (s *Service) Save(name, bundled string) (error, string) {
 	appId := uuid.New().String()
 	return s.Store.Save(appId, name, bundled)
 }
+
+func (s *Service) Scan() (error, []storage.MiniProgram) {
+	return s.Store.Scan()
+}
