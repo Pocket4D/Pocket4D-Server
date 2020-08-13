@@ -38,7 +38,8 @@ func NewController(app *iris.Application, ser *Service) *Controller {
 	{
 		v1.Post("/ping", c.Ping)
 		v1.Post("/bundled/{name}", c.UploadMiniBundled)
-		v1.Get("/bundled",c.All)
+		v1.Get("/bundled", c.All)
+		v1.Get("/bundled/{appId}/{name}", c.GetById)
 	}
 
 	return c
@@ -48,6 +49,14 @@ func (controller *Controller) Ping(ctx iris.Context) {
 	_, _ = ctx.JSON(iris.Map{
 		"message": "pong",
 	})
+}
+
+func (controller *Controller) GetById(ctx iris.Context) {
+	name := ctx.Params().GetString("name")
+	appId := ctx.Params().GetString("appId")
+
+	path := controller.service.Store.ConstructName(appId, name)
+	_ = ctx.SendFile(path, "")
 }
 
 func (controller *Controller) All(ctx iris.Context) {

@@ -54,12 +54,18 @@ Response:
 ```json
 [
     {
-        "AppId": "mini1",
-        "Name": "ae885b94-abee-4542-91b6-53ca658382d7"
+        "AppId": "ae885b94-abee-4542-91b6-53ca658382d7",
+        "Name": "mini1"
     },
     {
-        "AppId": "mini2",
-        "Name": "807540ae-2653-45f3-91f9-d9745a298150"
+        "AppId": "807540ae-2653-45f3-91f9-d9745a298150",
+        "Name": "mini2"
     }
 ]
 ```
+
+### Download bundled by appid and name
+
+Request: 
+
+GET **/api/v1/bundled/{appId}/{name}**

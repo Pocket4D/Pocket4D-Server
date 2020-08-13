@@ -23,8 +23,12 @@ func NewStore(path string) *Store {
 	}
 }
 
+func (s *Store) ConstructName(appId, name string) string {
+	return fmt.Sprintf("%s/%s-%s.json", s.Path, name, appId)
+}
+
 func (s *Store) Save(appId, name, bundled string) (error, string) {
-	fileName := fmt.Sprintf("%s/%s-%s.json", s.Path, name, appId)
+	fileName := s.ConstructName(appId, name)
 	err := ioutil.WriteFile(fileName, []byte(bundled), 0644)
 	if err != nil {
 		return err, ""
@@ -44,10 +48,10 @@ func (s *Store) Scan() (error, []MiniProgram) {
 		name := f.Name()
 		index := strings.Index(name, "-")
 		n := name[0:index]
-		appId := name[index+1:len(name)-5]
+		appId := name[index+1 : len(name)-5]
 		p := MiniProgram{
-			AppId: n,
-			Name:  appId,
+			AppId: appId,
+			Name:  n,
 		}
 		programs = append(programs, p)
 	}
