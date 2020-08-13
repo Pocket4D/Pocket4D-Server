@@ -26,9 +26,21 @@ binary (we can make a parameter for this in the future).
 
 **/api/v1/bundled/{name}**
 
-*Upload a mini program bundled, form-data*
+*Upload a mini program bundled, *
+
+Request: form-data
 
 key: bundled     
-     
 value: path of the file
+
+Response:
+
+Sample
+
+```json
+{
+    "app_id": "352a66d5-5cb4-46ac-83b9-7bf904d72707",
+    "name": "mini1"
+}
+```
 
