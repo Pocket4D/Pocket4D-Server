@@ -45,8 +45,6 @@ Sample
 
 ### List all mini program bundled
 
-**/api/v1/bundled/{name}**
-
 Request: 
 
 GET **/api/v1/bundled**
