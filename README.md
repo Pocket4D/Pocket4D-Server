@@ -32,6 +32,8 @@ form-data
 key: bundled     
 value: path of the file
 
+curl example 'curl -F bundled=@mini1.json localhost:8080/api/v1/bundled/mini'
+
 Response:
 
 Sample
