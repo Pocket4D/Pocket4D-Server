@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/FireStack-Lab/pocket4d-server/restful"
 	"github.com/FireStack-Lab/pocket4d-server/storage"
 	"github.com/kataras/iris/v12"
@@ -12,5 +13,5 @@ func main() {
 	store := storage.NewStore("bundled")
 	service := restful.NewService(store)
 	restful.NewController(app, service)
-	_ = app.Run(iris.Addr(fmt.Sprintf("%s:%d", "0.0.0.0", 8081)))
+	_ = app.Run(iris.Addr(fmt.Sprintf("%s:%d", "localhost", 3001)))
 }
